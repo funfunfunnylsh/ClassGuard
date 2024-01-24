@@ -1,9 +1,9 @@
-package com.lsh.plugin.activity
+package com.lsh.app.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lsh.plugin.R
-import com.lsh.plugin.leoapp.MyApplication
+import com.lsh.app.R
+import com.lsh.app.app.MyApplication
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

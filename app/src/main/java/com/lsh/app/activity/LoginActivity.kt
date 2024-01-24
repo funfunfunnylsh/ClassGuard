@@ -1,8 +1,8 @@
-package com.lsh.plugin.activity
+package com.lsh.app.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.lsh.plugin.R
+import com.lsh.app.R
 
 class LoginActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

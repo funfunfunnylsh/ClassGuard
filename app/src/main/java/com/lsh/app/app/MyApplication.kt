@@ -1,4 +1,4 @@
-package com.lsh.plugin.leoapp
+package com.lsh.app.app
 
 import android.app.Application
 
