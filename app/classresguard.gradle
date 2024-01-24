@@ -1,4 +1,4 @@
-apply plugin: "com.lsh.plugin.ClassGuard"
+apply plugin: "com.lsh.plugin.classGuard"
 
 //以下均为非必须，根据自己需要配置即可
 classResGuard {
