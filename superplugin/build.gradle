@@ -47,9 +47,9 @@ gradlePlugin {
         // register 这个名字可以随便填
         ClassGuardPlugin {
             // 插件id
-            id = 'com.lsh.plugin.classGuard'
+            id = 'com.lsh.plugin.ClassGuard'
             // 插件全路径
-            implementationClass = "com.lsh.plugin.ClassGuard"
+            implementationClass = "com.lsh.plugin.ClassGuardPlugin"
         }
     }
 }
