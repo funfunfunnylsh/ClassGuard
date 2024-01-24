@@ -2,7 +2,7 @@
 buildscript {
     dependencies {
 //        classpath "com.lsh.plugin:superplugin:1.1"
-//        classpath "com.github.funfunfunnylsh:ClassGuard:1.2.2"
+//        classpath "com.github.funfunfunnylsh:ClassGuard:1.2.4"
     }
 }
 
