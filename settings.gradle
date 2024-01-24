@@ -1,0 +1,33 @@
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+        google()
+        mavenCentral()
+//        mavenLocal()
+
+        maven {
+            // 本地maven仓库地址
+            url 'repo'
+        }
+
+        maven { url 'https://jitpack.io' }
+    }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_PROJECT)
+    repositories {
+        google()
+        mavenCentral()
+
+        maven {
+            // 本地maven仓库地址
+            url 'repo'
+        }
+
+        maven { url 'https://jitpack.io' }
+
+    }
+}
+rootProject.name = "ClassGuard"
+include ':app'
+include ':superplugin'
