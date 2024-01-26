@@ -1,23 +1,9 @@
 package com.lsh.plugin.entension
 
 import java.io.File
+import java.util.regex.Pattern
+import kotlin.math.pow
 
-
-/**
- *   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
- * ▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒        ██╔══██╗██║   ██║██╔════╝
- * ▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░        ██████╔╝██║   ██║██║  ███╗
- * ░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄        ██╔══██╗██║   ██║██║   ██║
- * ░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄       ██████╔╝╚██████╔╝╚██████╔╝
- *  ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒       ╚═════╝  ╚═════╝  ╚═════╝
- *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
- *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
- *           ░     ░ ░      ░  ░
- * @author : Leo
- * @date : 2022/12/16 19:24
- * @desc :
- * @since : xinxiniscool@gmail.com
- */
 fun String.removeSuffix(): String {
     val index = lastIndexOf(".")
     return if (index == -1) this else substring(0, index)
@@ -36,6 +22,27 @@ fun String.getDirName(): String {
 fun String.getDirPath(): String {
     val index = lastIndexOf(".")
     return if (index == -1) this else substring(0, index)
+}
+
+fun String.findWord(
+    word: String,
+    ignoreCase: Boolean = false
+): Int {
+    var occurrenceIndex: Int = indexOf(word, 0, ignoreCase)
+    // FAST PATH: no match
+    if (occurrenceIndex < 0) return -1
+
+    val oldValueLength = word.length
+    val searchStep = oldValueLength.coerceAtLeast(1)
+
+    do {
+        if (isWord(occurrenceIndex, word)) {
+            return occurrenceIndex
+        }
+        if (occurrenceIndex >= length) break
+        occurrenceIndex = indexOf(word, occurrenceIndex + searchStep, ignoreCase)
+    } while (occurrenceIndex > 0)
+    return -1
 }
 
 fun String.replaceWords(
@@ -87,4 +94,47 @@ fun String.isWord(index: Int, oldValue: String): Boolean {
         }
     }
     return true
+}
+
+internal fun String.splitWords(): List<String> {
+    val regex = Regex("(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])")
+    return split(regex).map { it.lowercase() }
+}
+
+// Long 转 大写字符串
+fun Long.toUpperLetterStr(): String {
+    return toLetterStr(true)
+}
+
+// Long 转 大/小字符串
+fun Long.toLetterStr(upperCase: Boolean = false): String {
+    val size = 26
+    val offSize = if (upperCase) 65 else 97
+    val sb = StringBuilder()
+    var num = this
+    do {
+        val char = (num % size + offSize).toChar()
+        sb.append(char)
+        num /= size
+    } while (num > 0)
+    return sb.reverse().toString()
+}
+
+//字符串转Long, 必须是大写或小写字母, 不能是大小写混合
+fun String.to26Long(): Long {
+    val regexLowercase = "^[a-z]+$"
+    val regexUppercase = "^[A-Z]+$"
+    val isLowercase = Pattern.matches(regexLowercase, this)
+    val isUppercase = if (isLowercase) false else Pattern.matches(regexUppercase, this)
+    if (!isLowercase && !isUppercase) {
+        throw IllegalArgumentException("string must be uppercase or lowercase but it was $this")
+    }
+    val offSize = if (isUppercase) 65 else 97
+    val length = length
+    var num = 0L
+    for (i in 0 until length) {
+        val c = get(i)
+        num += ((c.code - offSize) * 26.0.pow((length - 1 - i).toDouble())).toLong()
+    }
+    return num
 }

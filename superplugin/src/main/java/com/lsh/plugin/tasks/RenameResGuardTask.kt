@@ -8,11 +8,6 @@ import java.io.File
 import java.util.*
 import javax.inject.Inject
 
-/**
- * @author: Leo
- * @time: 2022/11/17
- * @desc:
- */
 open class RenameResGuardTask @Inject constructor(
     private val configExtension: ConfigExtension,
 ) : DefaultTask() {

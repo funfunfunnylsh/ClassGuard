@@ -15,11 +15,6 @@ import java.util.*
 import javax.inject.Inject
 import javax.lang.model.element.Modifier
 
-/**
- * @author: Leo
- * @time: 2022/11/18
- * @desc:
- */
 open class AddJunkFileGuardTask @Inject constructor(
     private val configExtension: ConfigExtension,
 ) : DefaultTask() {

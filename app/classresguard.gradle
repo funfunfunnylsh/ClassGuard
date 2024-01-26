@@ -1,4 +1,4 @@
-apply plugin: "com.lsh.plugin.classGuard"
+apply plugin: "com.lsh.plugin.ClassGuard"
 
 //以下均为非必须，根据自己需要配置即可
 classResGuard {
@@ -40,4 +40,11 @@ classResGuard {
     colorPrefixName = ["leo"]
     //strings的前缀名称,可配可不配
     stringsPrefixName = [""]
+
+    //混淆映射文件
+    mappingFile = file("xml-class-mapping.txt")
+    //移动目录，支持同时移动多个目录
+    moveDir = ["com.ljx.example": "ef.gh",
+               "com.ljx.base"   : "zzzz.hhhh",
+               "com.ljx.kts"    : "ddd.xxx"]
 }

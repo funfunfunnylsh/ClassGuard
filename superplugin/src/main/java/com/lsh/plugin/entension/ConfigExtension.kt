@@ -1,20 +1,7 @@
 package com.lsh.plugin.entension
 
-/**
- *   █████▒█    ██  ▄████▄   ██ ▄█▀       ██████╗ ██╗   ██╗ ██████╗
- * ▓██   ▒ ██  ▓██▒▒██▀ ▀█   ██▄█▒        ██╔══██╗██║   ██║██╔════╝
- * ▒████ ░▓██  ▒██░▒▓█    ▄ ▓███▄░        ██████╔╝██║   ██║██║  ███╗
- * ░▓█▒  ░▓▓█  ░██░▒▓▓▄ ▄██▒▓██ █▄        ██╔══██╗██║   ██║██║   ██║
- * ░▒█░   ▒▒█████▓ ▒ ▓███▀ ░▒██▒ █▄       ██████╔╝╚██████╔╝╚██████╔╝
- *  ▒ ░   ░▒▓▒ ▒ ▒ ░ ░▒ ▒  ░▒ ▒▒ ▓▒       ╚═════╝  ╚═════╝  ╚═════╝
- *  ░     ░░▒░ ░ ░   ░  ▒   ░ ░▒ ▒░
- *  ░ ░    ░░░ ░ ░ ░        ░ ░░ ░
- *           ░     ░ ░      ░  ░
- * @author : Leo
- * @date : 2022/12/16 19:08
- * @desc :
- * @since : xinxiniscool@gmail.com
- */
+import java.io.File
+
 open class ConfigExtension {
 
     var classPrefixName: Array<String> = arrayOf("")
@@ -25,9 +12,9 @@ open class ConfigExtension {
 
     var changeResDir: Array<String>? = null
 
-    var junkPackage = "com.leos.superplugin"
+    var junkPackage = "com.lsh.superplugin"
 
-    var junkResPackage = "com.leos.superplugin"
+    var junkResPackage = "com.lsh.superplugin"
 
     var activityClassMethodCount = 0
 
@@ -50,5 +37,9 @@ open class ConfigExtension {
     var colorPrefixName: Array<String> = arrayOf("")
 
     var stringsPrefixName: Array<String> = arrayOf("")
+
+    var moveDir = HashMap<String, String>()
+
+    var mappingFile: File? = null
 
 }
